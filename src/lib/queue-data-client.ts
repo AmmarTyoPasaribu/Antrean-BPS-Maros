@@ -29,7 +29,12 @@ export async function fetchServicesWithOfficers(): Promise<ServiceDisplay[]> {
 }
 
 export async function fetchQueues(): Promise<QueueItem[]> {
-  const { data } = await supabaseBrowser.from('queues').select('*').order('sequence_number', { ascending: true });
+  const today = getWitaDateString();
+  const { data } = await supabaseBrowser
+    .from('queues')
+    .select('*')
+    .eq('queue_date', today)
+    .order('sequence_number', { ascending: true });
   return (data ?? []) as QueueItem[];
 }
 
