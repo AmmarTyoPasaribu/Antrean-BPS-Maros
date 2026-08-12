@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", var(--font-sans);
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-brand-primary: #0284c7; /* Sky 600 */
+  --color-brand-secondary: #0f172a; /* Slate 900 */
+}
+
+/* Custom glow effect */
+.glow-card {
+  box-shadow: 0 0 40px -10px rgba(2, 132, 199, 0.1);
+}
+
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-marquee-custom {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-custom:hover {
+  animation-play-state: paused;
+}
+
+
+

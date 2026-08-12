@@ -1,0 +1,6 @@
+{
+  "name": "Antrian Online 3 Layanan",
+  "description": "Aplikasi Antrian Online Interaktif untuk Pelayanan Statistik, Pelayanan Pengaduan, dan PPID dengan panel monitor real-time dan panel admin operator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
