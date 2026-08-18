@@ -113,7 +113,7 @@ export default function AdminPanel({
       {/* 4 Stats Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Total Queue */}
-        <div className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm glow-card flex items-center justify-between">
+        <div className="bg-surface rounded-2xl border border-slate-100 p-5 shadow-sm glow-card flex items-center justify-between">
           <div className="space-y-1">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Total Antrian</span>
             <h2 className="text-2xl font-bold font-display text-slate-800">{totalToday}</h2>
@@ -125,7 +125,7 @@ export default function AdminPanel({
         </div>
 
         {/* Card 2: Waiting */}
-        <div className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm glow-card flex items-center justify-between">
+        <div className="bg-surface rounded-2xl border border-slate-100 p-5 shadow-sm glow-card flex items-center justify-between">
           <div className="space-y-1">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Menunggu</span>
             <h2 className="text-2xl font-bold font-display text-amber-600">{waitingToday}</h2>
@@ -137,7 +137,7 @@ export default function AdminPanel({
         </div>
 
         {/* Card 3: Completed */}
-        <div className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm glow-card flex items-center justify-between">
+        <div className="bg-surface rounded-2xl border border-slate-100 p-5 shadow-sm glow-card flex items-center justify-between">
           <div className="space-y-1">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Selesai</span>
             <h2 className="text-2xl font-bold font-display text-emerald-600">{completedToday}</h2>
@@ -172,7 +172,7 @@ export default function AdminPanel({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left 1 Column: Officer Loket Action Cards */}
         <div className="lg:col-span-1 space-y-4">
-          <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-5 space-y-4 glow-card">
+          <div className="bg-surface rounded-3xl border border-slate-100 shadow-sm p-5 space-y-4 glow-card">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="font-bold font-display text-slate-800 text-sm">Panggilan Operator</h3>
               <button
@@ -212,7 +212,7 @@ export default function AdminPanel({
 
                     {/* Active Ticket Caller Box */}
                     {activeCalling ? (
-                      <div className="bg-white border border-sky-100 rounded-xl p-3 flex items-center justify-between">
+                      <div className="bg-surface border border-sky-100 rounded-xl p-3 flex items-center justify-between">
                         <div>
                           <span className="text-[9px] font-bold text-slate-400 block uppercase">Sedang Melayani</span>
                           <span className="text-xl font-bold font-display text-sky-600">{activeCalling.number}</span>
@@ -276,7 +276,7 @@ export default function AdminPanel({
         {/* Right 2 Columns: Lists and logs */}
         <div className="lg:col-span-2 space-y-6">
           {/* Queues management block */}
-          <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-5 glow-card">
+          <div className="bg-surface rounded-3xl border border-slate-100 shadow-sm p-5 glow-card">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
               <div className="flex items-center gap-2.5">
                 <h3 className="font-bold font-display text-slate-800 text-sm">Daftar Antrian</h3>
@@ -315,7 +315,7 @@ export default function AdminPanel({
                     id="sub-tab-waiting"
                     onClick={() => setActiveSubTab('waiting')}
                     className={`px-3 py-1 text-xs font-semibold rounded-md transition ${
-                      activeSubTab === 'waiting' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'
+                      activeSubTab === 'waiting' ? 'bg-surface text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'
                     }`}
                   >
                     Antrian
@@ -324,7 +324,7 @@ export default function AdminPanel({
                     id="sub-tab-completed"
                     onClick={() => setActiveSubTab('completed')}
                     className={`px-3 py-1 text-xs font-semibold rounded-md transition ${
-                      activeSubTab === 'completed' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'
+                      activeSubTab === 'completed' ? 'bg-surface text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'
                     }`}
                   >
                     Selesai

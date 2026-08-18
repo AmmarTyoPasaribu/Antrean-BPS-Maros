@@ -34,7 +34,7 @@ export default function VisitorMonitor({ services, queues }: VisitorMonitorProps
             <div
               key={srv.id}
               id={`monitor-card-${srv.id}`}
-              className={`bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden flex flex-col justify-between transition-all duration-300 relative glow-card ${
+              className={`bg-surface rounded-3xl border border-slate-100 shadow-xl overflow-hidden flex flex-col justify-between transition-all duration-300 relative glow-card ${
                 calling ? 'ring-2 ring-sky-500 ring-offset-2' : ''
               }`}
             >
@@ -91,7 +91,7 @@ export default function VisitorMonitor({ services, queues }: VisitorMonitorProps
                       className="w-32 h-32 rounded-3xl object-cover border-2 border-sky-600 shadow-xl shadow-sky-600/20"
                       referrerPolicy="no-referrer"
                     />
-                    <span className="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-2 border-white rounded-full"></span>
+                    <span className="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-2 border-surface rounded-full"></span>
                   </div>
                   <div>
                     <span className="text-[11px] font-bold text-sky-600 uppercase tracking-widest block mb-1.5">Petugas hari ini</span>

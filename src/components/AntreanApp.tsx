@@ -267,9 +267,9 @@ export default function AntreanApp({
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col font-sans selection:bg-sky-500/10 selection:text-sky-600">
+    <div className="min-h-screen bg-app-bg text-slate-800 flex flex-col font-sans selection:bg-sky-500/10 selection:text-sky-600">
       {/* Top Professional Header */}
-      <header id="app-main-header" className="bg-white border-b border-slate-200/80 sticky top-0 z-40">
+      <header id="app-main-header" className="bg-surface border-b border-slate-200/80 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-4">
           {/* Logo & Office Brand */}
           <div className="flex items-center gap-3 shrink-0">
@@ -310,7 +310,7 @@ export default function AntreanApp({
                     title="Tampilan Monitor Utama Publik"
                     className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 cursor-pointer ${
                       layoutMode === 'visitor'
-                        ? 'bg-white text-slate-900 shadow-sm border border-slate-200/20'
+                        ? 'bg-surface text-slate-900 shadow-sm border border-slate-200/20'
                         : 'text-slate-500 hover:text-slate-800'
                     }`}
                   >
@@ -323,7 +323,7 @@ export default function AntreanApp({
                     title="Panel Admin Operator"
                     className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 cursor-pointer ${
                       layoutMode === 'admin'
-                        ? 'bg-white text-slate-900 shadow-sm border border-slate-200/20'
+                        ? 'bg-surface text-slate-900 shadow-sm border border-slate-200/20'
                         : 'text-slate-500 hover:text-slate-800'
                     }`}
                   >
@@ -336,7 +336,7 @@ export default function AntreanApp({
                     title="Kelola Data Petugas"
                     className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition flex items-center gap-1.5 cursor-pointer ${
                       layoutMode === 'petugas'
-                        ? 'bg-white text-slate-900 shadow-sm border border-slate-200/20'
+                        ? 'bg-surface text-slate-900 shadow-sm border border-slate-200/20'
                         : 'text-slate-500 hover:text-slate-800'
                     }`}
                   >
@@ -390,18 +390,18 @@ export default function AntreanApp({
       </header>
 
       {/* Running Text Banner */}
-      <div id="running-text-banner" className="bg-orange-600 text-white py-2.5 shadow-md overflow-hidden border-b border-orange-700 select-none relative flex items-center">
+      <div id="running-text-banner" className="bg-amber-100 text-amber-900 py-2.5 shadow-sm overflow-hidden border-b border-amber-200 select-none relative flex items-center">
         <div className="w-full overflow-hidden relative flex items-center">
           <div className="animate-marquee-custom text-xs sm:text-sm font-semibold tracking-wide flex items-center gap-12 whitespace-nowrap">
-            <span>SELAMAT DATANG DI PELAYANAN STATISTIK TERPADU BPS KABUPATEN MAROS</span>
-            <span className="text-yellow-300 font-extrabold text-lg">•</span>
+            <span>SELAMAT DATANG DI SISTEM PELAYANAN & BUKU TAMU BPS KABUPATEN MAROS</span>
+            <span className="text-amber-500 font-extrabold text-lg">•</span>
             <span>TERIMA KEDATANGAN PETUGAS SENSUS EKONOMI 2026. SENSUS EKONOMI 2026 - MENCATAT EKONOMI INDONESIA!</span>
-            <span className="text-yellow-300 font-extrabold text-lg">•</span>
+            <span className="text-amber-500 font-extrabold text-lg">•</span>
             {/* Duplicated for infinite continuous looping */}
-            <span>SELAMAT DATANG DI PELAYANAN STATISTIK TERPADU BPS KABUPATEN MAROS</span>
-            <span className="text-yellow-300 font-extrabold text-lg">•</span>
+            <span>SELAMAT DATANG DI SISTEM PELAYANAN & BUKU TAMU BPS KABUPATEN MAROS</span>
+            <span className="text-amber-500 font-extrabold text-lg">•</span>
             <span>TERIMA KEDATANGAN PETUGAS SENSUS EKONOMI 2026. SENSUS EKONOMI 2026 - MENCATAT EKONOMI INDONESIA!</span>
-            <span className="text-yellow-300 font-extrabold text-lg">•</span>
+            <span className="text-amber-500 font-extrabold text-lg">•</span>
           </div>
         </div>
       </div>
@@ -412,7 +412,7 @@ export default function AntreanApp({
         {layoutMode === 'visitor' && (
           <div className="space-y-8">
             {/* Merged Jam Operasional & Ambil Antrian Card */}
-            <div className="bg-white rounded-3xl border border-slate-100 shadow-xl p-6 space-y-5 transition-all duration-300">
+            <div className="bg-surface rounded-3xl border border-slate-100 shadow-xl p-6 space-y-5 transition-all duration-300">
               {/* Top Part: Jam Operasional */}
               <div id="jam-operasional-container" className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-3.5 text-slate-800">
@@ -421,10 +421,10 @@ export default function AntreanApp({
                   </div>
                   <div>
                     <h3 className="font-bold text-base font-display text-slate-900 tracking-tight">
-                      Jam Operasional Layanan BPS Kabupaten Maros
+                      SILABU
                     </h3>
                     <p className="text-xs text-slate-500 font-medium">
-                      Silakan datang sesuai dengan ketentuan jam operasional layanan kami.
+                      Sistem Pelayanan & Buku Tamu BPS Kabupaten Maros
                     </p>
                   </div>
                 </div>
@@ -525,7 +525,7 @@ export default function AntreanApp({
           selalu menutupi seluruh viewport, tidak bergantung ancestor) */}
       {showLoginModal && createPortal(
         <div id="login-modal-backdrop" className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
-          <div className="bg-white rounded-3xl shadow-2xl p-6 w-full max-w-sm border border-slate-100 relative">
+          <div className="bg-surface rounded-3xl shadow-2xl p-6 w-full max-w-sm border border-slate-100 relative">
             <button
               onClick={() => {
                 setShowLoginModal(false);
@@ -589,17 +589,10 @@ export default function AntreanApp({
       )}
 
       {/* Modern Compact Footer */}
-      <footer id="app-main-footer" className="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-400">
+      <footer id="app-main-footer" className="bg-surface border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-400">
         <div className="max-w-7xl mx-auto px-4 space-y-2">
           <p className="font-semibold text-slate-500 font-display">Aplikasi Antrean Online BPS Kabupaten Maros © 2026</p>
           <p>- Tim IPDS (Integrasi Pengolahan, Diseminasi, dan Publikasi Statistik) -</p>
-          <div className="flex justify-center gap-4 text-[10px] font-semibold text-slate-400/80 uppercase tracking-widest pt-1">
-            <span>Responsive Layout</span>
-            <span>•</span>
-            <span>Indonesian Voice Synthesis Enabled</span>
-            <span>•</span>
-            <span>Local Offline Persistence</span>
-          </div>
         </div>
       </footer>
     </div>

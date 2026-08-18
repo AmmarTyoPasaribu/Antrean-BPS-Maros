@@ -39,7 +39,7 @@ export default function ConfirmModal({
       id="confirm-modal-backdrop"
       className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[70] animate-fadeIn"
     >
-      <div className="bg-white rounded-3xl shadow-2xl p-6 w-full max-w-sm border border-slate-100 relative">
+      <div className="bg-surface rounded-3xl shadow-2xl p-6 w-full max-w-sm border border-slate-100 relative">
         <div className="flex flex-col items-center text-center mb-6">
           <div className={`p-3 rounded-2xl mb-3 ${isDanger ? 'bg-red-50 text-red-600' : 'bg-sky-50 text-sky-600'}`}>
             {isDanger ? <AlertTriangle className="w-6 h-6" /> : <HelpCircle className="w-6 h-6" />}

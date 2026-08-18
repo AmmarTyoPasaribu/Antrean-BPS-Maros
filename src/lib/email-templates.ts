@@ -10,8 +10,8 @@ export function renderGuestBookThankYouEmail({ visitorName, visitDateLabel }: Gu
   return `
 <!doctype html>
 <html lang="id">
-  <body style="margin:0; padding:0; background-color:#f8fafc; font-family:Arial, Helvetica, sans-serif;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f8fafc; padding:32px 16px;">
+  <body style="margin:0; padding:0; background-color:#E6EBF3; font-family:Arial, Helvetica, sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#E6EBF3; padding:32px 16px;">
       <tr>
         <td align="center">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px; background-color:#ffffff; border-radius:24px; overflow:hidden; border:1px solid #f1f5f9;">
@@ -70,7 +70,7 @@ export function renderGuestBookThankYouEmail({ visitorName, visitDateLabel }: Gu
 
             <!-- Footer -->
             <tr>
-              <td style="padding:16px 32px; background-color:#f8fafc; border-top:1px solid #f1f5f9; text-align:center;">
+              <td style="padding:16px 32px; background-color:#E6EBF3; border-top:1px solid #f1f5f9; text-align:center;">
                 <p style="font-size:10px; color:#94a3b8; margin:0; letter-spacing:0.5px;">
                   Email ini dikirim otomatis oleh Sistem Antrean &amp; Buku Tamu Digital BPS Kabupaten Maros.
                   Mohon tidak membalas email ini.

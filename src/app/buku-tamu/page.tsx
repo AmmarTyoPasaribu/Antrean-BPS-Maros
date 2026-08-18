@@ -109,8 +109,8 @@ export default function BukuTamuPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col font-sans">
-      <header id="guest-book-header" className="bg-white border-b border-slate-200/80">
+    <div className="min-h-screen bg-app-bg text-slate-800 flex flex-col font-sans">
+      <header id="guest-book-header" className="bg-surface border-b border-slate-200/80">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-3.5 flex items-center gap-3">
           <img src="/images/Logo BPS.png" alt="Logo BPS" className="w-10 h-9 object-contain" referrerPolicy="no-referrer" />
           <div>
@@ -127,7 +127,7 @@ export default function BukuTamuPage() {
 
       <main className="flex-grow max-w-2xl w-full mx-auto px-4 sm:px-6 py-10">
         {step === 'thanks' && (
-          <div id="guest-book-thank-you" className="bg-white rounded-3xl border border-slate-100 shadow-xl p-10 flex flex-col items-center text-center animate-fadeIn">
+          <div id="guest-book-thank-you" className="bg-surface rounded-3xl border border-slate-100 shadow-xl p-10 flex flex-col items-center text-center animate-fadeIn">
             <div className="p-4 bg-emerald-50 rounded-2xl text-emerald-600 mb-4">
               <CheckCircle2 className="w-10 h-10" />
             </div>
@@ -154,7 +154,7 @@ export default function BukuTamuPage() {
         )}
 
         {step === 'form' && (
-          <div className="bg-white rounded-3xl border border-slate-100 shadow-xl p-6 sm:p-8 space-y-6">
+          <div className="bg-surface rounded-3xl border border-slate-100 shadow-xl p-6 sm:p-8 space-y-6">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-sky-50 text-sky-600 rounded-2xl shrink-0">
                 <BookOpen className="w-6 h-6" />
@@ -280,7 +280,7 @@ export default function BukuTamuPage() {
         )}
 
         {step === 'survey' && (
-          <div id="survey-form-container" className="bg-white rounded-3xl border border-slate-100 shadow-xl p-6 sm:p-8 space-y-6 animate-fadeIn">
+          <div id="survey-form-container" className="bg-surface rounded-3xl border border-slate-100 shadow-xl p-6 sm:p-8 space-y-6 animate-fadeIn">
             <div className="flex items-center gap-3">
               <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl shrink-0">
                 <ClipboardList className="w-6 h-6" />

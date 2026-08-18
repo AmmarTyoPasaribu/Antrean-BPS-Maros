@@ -144,7 +144,7 @@ export default function OfficerManagement({
 
   return (
     <div id="officer-management-container" className="space-y-6">
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-5 glow-card space-y-4">
+      <div className="bg-surface rounded-3xl border border-slate-100 shadow-sm p-5 glow-card space-y-4">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-sky-50 text-sky-600 rounded-xl">
@@ -242,7 +242,7 @@ export default function OfficerManagement({
           id="add-officer-modal-backdrop"
           className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn"
         >
-          <div className="bg-white rounded-3xl shadow-2xl p-6 w-full max-w-sm border border-slate-100 relative">
+          <div className="bg-surface rounded-3xl shadow-2xl p-6 w-full max-w-sm border border-slate-100 relative">
             <button
               onClick={() => {
                 setShowAddModal(false);

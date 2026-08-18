@@ -139,7 +139,7 @@ export default function RotationManager({ services, officers }: RotationManagerP
   };
 
   return (
-    <div id="rotation-manager-container" className="bg-white rounded-3xl border border-slate-100 shadow-sm p-5 glow-card space-y-4">
+    <div id="rotation-manager-container" className="bg-surface rounded-3xl border border-slate-100 shadow-sm p-5 glow-card space-y-4">
       <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
         <div className="p-2 bg-sky-50 text-sky-600 rounded-xl">
           <ListOrdered className="w-4 h-4" />
@@ -180,7 +180,7 @@ export default function RotationManager({ services, officers }: RotationManagerP
               {loading ? (
                 <div className="text-[11px] text-slate-400 py-4 text-center">Memuat...</div>
               ) : list.length === 0 ? (
-                <div className="bg-white rounded-xl border border-dashed border-slate-200 p-3 flex items-start gap-2">
+                <div className="bg-surface rounded-xl border border-dashed border-slate-200 p-3 flex items-start gap-2">
                   <Shuffle className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
                   <span className="text-[10px] text-slate-400 leading-relaxed">
                     Belum ada rotasi diatur. Sistem akan memilih petugas secara acak setiap hari.
@@ -194,7 +194,7 @@ export default function RotationManager({ services, officers }: RotationManagerP
                     <li
                       key={entry.officerId}
                       className={`border rounded-xl p-2 flex items-center gap-2 transition-colors ${
-                        isCurrent ? 'bg-emerald-50 border-emerald-200' : 'bg-white border-slate-100'
+                        isCurrent ? 'bg-emerald-50 border-emerald-200' : 'bg-surface border-slate-100'
                       }`}
                     >
                       <span className={`text-[10px] font-bold w-4 text-center shrink-0 ${isCurrent ? 'text-emerald-600' : 'text-slate-400'}`}>{index + 1}</span>
@@ -249,7 +249,7 @@ export default function RotationManager({ services, officers }: RotationManagerP
                   value={addSelections[srv.id] ?? ''}
                   onChange={(e) => setAddSelections((prev) => ({ ...prev, [srv.id]: e.target.value }))}
                   disabled={isSaving || availableToAdd.length === 0}
-                  className="flex-grow bg-white border border-slate-200 rounded-lg px-2 py-1.5 text-[11px] font-semibold text-slate-700 focus:outline-none focus:border-sky-500 shadow-sm cursor-pointer disabled:opacity-50"
+                  className="flex-grow bg-surface border border-slate-200 rounded-lg px-2 py-1.5 text-[11px] font-semibold text-slate-700 focus:outline-none focus:border-sky-500 shadow-sm cursor-pointer disabled:opacity-50"
                 >
                   <option value="">
                     {availableToAdd.length === 0 ? 'Semua petugas aktif sudah masuk rotasi' : '-- Tambah ke rotasi --'}

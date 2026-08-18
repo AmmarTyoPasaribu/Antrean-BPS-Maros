@@ -8,6 +8,14 @@
   
   --color-brand-primary: #0284c7; /* Sky 600 */
   --color-brand-secondary: #0f172a; /* Slate 900 */
+
+  /* Soft surface system — nothing in the UI should sit on pure #ffffff.
+     app-bg = page background, surface = cards/header/footer/modals (a hair
+     off pure white, still reads as "white"), surface-muted = nested panels
+     inside a surface for a visible extra step of depth. */
+  --color-app-bg: #E6EBF3;
+  --color-surface: #FAFBFD;
+  --color-surface-muted: #EEF1F6;
 }
 
 /* Custom glow effect */
