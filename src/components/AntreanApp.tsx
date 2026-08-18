@@ -272,8 +272,8 @@ export default function AntreanApp({
       <header id="app-main-header" className="bg-white border-b border-slate-200/80 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-4">
           {/* Logo & Office Brand */}
-          <div className="flex items-center gap-3">
-            <div className="p-1 bg-transparent rounded-xl flex items-center justify-center">
+          <div className="flex items-center gap-3 shrink-0">
+            <div className="p-1 bg-transparent rounded-xl flex items-center justify-center shrink-0">
               <img
                 src="/images/Logo BPS.png"
                 alt="Logo BPS"
@@ -286,8 +286,8 @@ export default function AntreanApp({
                 className="leading-tight tracking-wider text-slate-950 flex flex-col"
                 style={{ fontFamily: "'Arial', sans-serif", fontWeight: 'bold', fontStyle: 'italic' }}
               >
-                <span className="text-sm uppercase">BADAN PUSAT STATISTIK</span>
-                <span className="text-sm text-slate-950 uppercase mt-0.5">KABUPATEN MAROS</span>
+                <span className="text-sm uppercase whitespace-nowrap">BADAN PUSAT STATISTIK</span>
+                <span className="text-sm text-slate-950 uppercase mt-0.5 whitespace-nowrap">KABUPATEN MAROS</span>
               </h1>
             </div>
           </div>
