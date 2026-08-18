@@ -315,7 +315,7 @@ export default function AntreanApp({
                     }`}
                   >
                     <Monitor className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Layar Monitor</span>
+                    <span className="hidden sm:inline">Monitor</span>
                   </button>
                   <button
                     id="layout-btn-admin"
@@ -341,7 +341,7 @@ export default function AntreanApp({
                     }`}
                   >
                     <Users className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Kelola Petugas</span>
+                    <span className="hidden sm:inline">Kelola</span>
                   </button>
                 </div>
 
