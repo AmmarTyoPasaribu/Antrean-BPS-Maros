@@ -124,6 +124,22 @@ create table if not exists public.guest_book_entries (
 
 create index if not exists idx_guest_book_visit_date on public.guest_book_entries(visit_date);
 
+-- Survei Kepuasan Pelanggan — SENGAJA TIDAK terhubung ke guest_book_entries
+-- (tanpa foreign key / ID pengisi buku tamu). Ini dataset independen: siapa
+-- saja yang habis isi buku tamu diarahkan ke halaman survei ini, tapi
+-- jawabannya tidak dikaitkan ke identitas siapapun.
+create table if not exists public.satisfaction_surveys (
+  id uuid primary key default gen_random_uuid(),
+  survey_date date not null,
+  rating int not null check (rating between 1 and 5),
+  liked_text text not null,
+  suggestion_text text not null,
+  synced_to_sheet boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists idx_satisfaction_surveys_date on public.satisfaction_surveys(survey_date);
+
 
 -- ============================================================
 -- 1b. MIGRASI UNTUK DATABASE YANG SUDAH ADA ISINYA
@@ -223,6 +239,10 @@ alter table public.guest_book_entries enable row level security;
 -- yang boleh insert/select. Pengunjung tidak login, jadi tidak ada jalur
 -- publik langsung -- validasi & efek samping (Sheets + email) ditangani
 -- di server sebelum insert.
+
+alter table public.satisfaction_surveys enable row level security;
+-- sama seperti guest_book_entries -- tanpa policy publik, hanya lewat
+-- service_role di API route /api/survey.
 
 
 -- ============================================================

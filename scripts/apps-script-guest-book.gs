@@ -1,61 +1,100 @@
 // ============================================================
-// BUKU TAMU — Google Apps Script Web App
+// BUKU TAMU + SURVEI KEPUASAN — Google Apps Script Web App
 //
-// Cara pakai: buat Google Sheet baru, buka Extensions > Apps Script,
-// hapus isi default, tempel SELURUH kode ini, ganti SHARED_SECRET di
-// bawah, lalu Deploy > New deployment > Web app (lihat panduan lengkap
-// dari asisten untuk langkah persisnya).
+// Cara pakai: buka Google Sheet yang SUDAH ADA (yang sudah dipakai Buku
+// Tamu sekarang), buka Extensions > Apps Script, HAPUS semua kode lama,
+// tempel SELURUH kode ini, lalu Deploy > Manage deployments > edit
+// (ikon pensil) > Version: New version > Deploy. URL Web App-nya TETAP
+// SAMA, tidak perlu ganti apapun di .env.local / Vercel.
 // ============================================================
 
-// Ganti dengan string acak yang sama dengan GUEST_BOOK_SHEET_WEBHOOK_SECRET
-// di .env.local project Next.js. Ini mencegah orang lain selain aplikasi
-// kita menulis ke sheet ini meskipun mereka tahu URL Web App-nya.
+// Harus PERSIS SAMA dengan GUEST_BOOK_SHEET_WEBHOOK_SECRET di .env.local.
 var SHARED_SECRET = 'GANTI_DENGAN_SECRET_YANG_SAMA_DENGAN_ENV_LOCAL';
+
+var SURVEY_SHEET_NAME = 'Survei Kepuasan';
 
 function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
 
     if (data.secret !== SHARED_SECRET) {
-      return ContentService
-        .createTextOutput(JSON.stringify({ ok: false, error: 'Invalid secret' }))
-        .setMimeType(ContentService.MimeType.JSON);
+      return respond({ ok: false, error: 'Invalid secret' });
     }
 
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
 
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow([
-        'Tanggal Kunjungan',
-        'Nama Pengunjung',
-        'Jenis Kelamin',
-        'Pekerjaan Utama',
-        'Instansi',
-        'Tujuan Berkunjung',
-        'Email Pengunjung',
-        'Nomor WhatsApp',
-        'Waktu Submit (server)',
-      ]);
+    if (data.type === 'survey') {
+      writeSurveyRow(ss, data);
+    } else {
+      writeGuestBookRow(ss, data);
     }
 
-    sheet.appendRow([
-      data.visitDate || '',
-      data.visitorName || '',
-      data.gender || '',
-      data.occupation || '',
-      data.institution || '',
-      data.visitPurpose || '',
-      data.email || '',
-      data.whatsapp || '',
-      new Date(),
-    ]);
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ ok: true }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return respond({ ok: true });
   } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ ok: false, error: String(err) }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return respond({ ok: false, error: String(err) });
   }
+}
+
+function writeGuestBookRow(ss, data) {
+  // Sheet PERTAMA di file ini (posisi tab paling kiri) -- dipakai secara
+  // stabil lewat posisi, BUKAN getActiveSheet() (yang gampang salah kalau
+  // ada orang lagi buka/klik tab lain di Sheets saat script jalan).
+  var sheet = ss.getSheets()[0];
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow([
+      'Tanggal Kunjungan',
+      'Nama Pengunjung',
+      'Jenis Kelamin',
+      'Pekerjaan Utama',
+      'Instansi',
+      'Tujuan Berkunjung',
+      'Email Pengunjung',
+      'Nomor WhatsApp',
+      'Waktu Submit (server)',
+    ]);
+  }
+
+  sheet.appendRow([
+    data.visitDate || '',
+    data.visitorName || '',
+    data.gender || '',
+    data.occupation || '',
+    data.institution || '',
+    data.visitPurpose || '',
+    data.email || '',
+    data.whatsapp || '',
+    new Date(),
+  ]);
+}
+
+function writeSurveyRow(ss, data) {
+  var sheet = ss.getSheetByName(SURVEY_SHEET_NAME);
+  if (!sheet) {
+    sheet = ss.insertSheet(SURVEY_SHEET_NAME);
+  }
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow([
+      'Tanggal',
+      'Rating Kepuasan (1-5)',
+      'Hal yang Disukai',
+      'Saran Perbaikan',
+      'Waktu Submit (server)',
+    ]);
+  }
+
+  sheet.appendRow([
+    data.surveyDate || '',
+    data.rating || '',
+    data.liked || '',
+    data.suggestion || '',
+    new Date(),
+  ]);
+}
+
+function respond(obj) {
+  return ContentService
+    .createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
 }

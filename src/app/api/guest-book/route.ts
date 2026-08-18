@@ -3,6 +3,7 @@ import { supabaseAdmin } from '@/lib/supabase-admin';
 import { getWitaDateString } from '@/lib/wita';
 import { sendEmail } from '@/lib/mailer';
 import { renderGuestBookThankYouEmail } from '@/lib/email-templates';
+import { postToSheetWebhook } from '@/lib/sheet-webhook';
 
 const GENDERS = ['Laki-laki', 'Perempuan'];
 
@@ -69,42 +70,19 @@ export async function POST(request: NextRequest) {
   // Dibatasi 8 detik per panggilan supaya form tidak menggantung kalau salah
   // satu layanan eksternal lambat/hang.
   const syncToSheet = async () => {
-    const sheetWebhookUrl = process.env.GUEST_BOOK_SHEET_WEBHOOK_URL;
-    if (!sheetWebhookUrl) return;
-    try {
-      // redirect: 'manual' is deliberate. Apps Script Web Apps always answer
-      // a successful doPost() with a 302 to script.googleusercontent.com to
-      // actually serve the response body. If we let fetch auto-follow that
-      // redirect, the Fetch spec downgrades the follow-up request from POST
-      // to GET (redirects to 301/302/303 must not preserve a non-GET/HEAD
-      // method) — which 404s/405s against that one-time URL and looks like
-      // failure even though doPost already ran successfully. So: don't
-      // follow it, just treat the redirect itself as confirmation.
-      const res = await fetch(sheetWebhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          secret: process.env.GUEST_BOOK_SHEET_WEBHOOK_SECRET ?? '',
-          visitDate: visitDateLabel,
-          visitorName,
-          gender,
-          occupation,
-          institution,
-          visitPurpose,
-          email,
-          whatsapp: whatsappNumber,
-        }),
-        redirect: 'manual',
-        signal: AbortSignal.timeout(8000),
-      });
-      const succeeded = res.ok || res.type === 'opaqueredirect' || (res.status >= 300 && res.status < 400);
-      if (succeeded) {
-        await supabaseAdmin.from('guest_book_entries').update({ synced_to_sheet: true }).eq('id', entry.id);
-      } else {
-        console.error('Guest book sheet webhook returned unexpected status:', res.status, res.type);
-      }
-    } catch (err) {
-      console.error('Guest book sheet webhook failed:', err);
+    const succeeded = await postToSheetWebhook({
+      type: 'guest_book',
+      visitDate: visitDateLabel,
+      visitorName,
+      gender,
+      occupation,
+      institution,
+      visitPurpose,
+      email,
+      whatsapp: whatsappNumber,
+    });
+    if (succeeded) {
+      await supabaseAdmin.from('guest_book_entries').update({ synced_to_sheet: true }).eq('id', entry.id);
     }
   };
 

@@ -40,10 +40,26 @@ export function renderGuestBookThankYouEmail({ visitorName, visitDateLabel }: Gu
                   pada <strong>${visitDateLabel}</strong>. Kunjungan dan masukan Anda sangat berarti bagi kami dalam
                   meningkatkan kualitas pelayanan statistik.
                 </p>
-                <p style="font-size:14px; color:#334155; line-height:1.7; margin:0 0 24px 0;">
+                <p style="font-size:14px; color:#334155; line-height:1.7; margin:0 0 20px 0;">
                   Jika ada pertanyaan lebih lanjut terkait data maupun layanan statistik, jangan ragu untuk
                   menghubungi kami kembali di kunjungan berikutnya.
                 </p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f9ff; border:1px solid #e0f2fe; border-radius:16px; margin:0 0 24px 0;">
+                  <tr>
+                    <td style="padding:18px 20px;">
+                      <p style="font-size:13px; color:#0c4a6e; line-height:1.6; margin:0 0 12px 0;">
+                        Jika berkenan, mohon luangkan waktu sebentar untuk mengisi <strong>Survei Kepuasan
+                        Pelanggan (SKD)</strong> resmi BPS berikut ini. Masukan Anda sangat membantu kami:
+                      </p>
+                      <a href="https://skd.bps.go.id/skd/p/7308"
+                         style="display:inline-block; background-color:#0284c7; color:#ffffff; font-size:13px; font-weight:bold; text-decoration:none; padding:10px 20px; border-radius:10px;">
+                        Isi Survei Kepuasan Pelanggan (SKD)
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+
                 <p style="font-size:14px; color:#0f172a; margin:0;">
                   Salam,<br />
                   <strong>Tim IPDS BPS Kabupaten Maros</strong><br />
